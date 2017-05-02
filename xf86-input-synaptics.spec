@@ -4,7 +4,7 @@
 #
 Name     : xf86-input-synaptics
 Version  : 1.9.0
-Release  : 23
+Release  : 24
 URL      : http://xorg.freedesktop.org/releases/individual/driver/xf86-input-synaptics-1.9.0.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/driver/xf86-input-synaptics-1.9.0.tar.gz
 Summary  : X.Org synaptics input driver.
