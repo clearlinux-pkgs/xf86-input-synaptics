@@ -6,11 +6,11 @@
 #
 Name     : xf86-input-synaptics
 Version  : 1.9.1
-Release  : 34
+Release  : 35
 URL      : http://xorg.freedesktop.org/releases/individual/driver/xf86-input-synaptics-1.9.1.tar.gz
 Source0  : http://xorg.freedesktop.org/releases/individual/driver/xf86-input-synaptics-1.9.1.tar.gz
 Source99 : http://xorg.freedesktop.org/releases/individual/driver/xf86-input-synaptics-1.9.1.tar.gz.sig
-Summary  : X.Org synaptics input driver.
+Summary  : Synaptics driver for notebook touchpads
 Group    : Development/Tools
 License  : MIT
 Requires: xf86-input-synaptics-bin = %{version}-%{release}
@@ -40,7 +40,6 @@ Summary: bin components for the xf86-input-synaptics package.
 Group: Binaries
 Requires: xf86-input-synaptics-data = %{version}-%{release}
 Requires: xf86-input-synaptics-license = %{version}-%{release}
-Requires: xf86-input-synaptics-man = %{version}-%{release}
 
 %description bin
 bin components for the xf86-input-synaptics package.
@@ -61,6 +60,7 @@ Requires: xf86-input-synaptics-lib = %{version}-%{release}
 Requires: xf86-input-synaptics-bin = %{version}-%{release}
 Requires: xf86-input-synaptics-data = %{version}-%{release}
 Provides: xf86-input-synaptics-devel = %{version}-%{release}
+Requires: xf86-input-synaptics = %{version}-%{release}
 
 %description dev
 dev components for the xf86-input-synaptics package.
@@ -100,9 +100,16 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542110408
+export SOURCE_DATE_EPOCH=1557105207
 export CFLAGS="-O3 -g -fopt-info-vec "
 unset LDFLAGS
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -114,7 +121,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1542110408
+export SOURCE_DATE_EPOCH=1557105207
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/xf86-input-synaptics
 cp COPYING %{buildroot}/usr/share/package-licenses/xf86-input-synaptics/COPYING
